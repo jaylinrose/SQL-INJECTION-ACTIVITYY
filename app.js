@@ -15,8 +15,22 @@ db.serialize(function () {
  db.run("INSERT INTO user VALUES ('privilegedUser', 'privilegedUser1', 'Administrator')");
 });
 
+//GET ROUTE
+
 app.get('/', function (req, res) {
     res.sendFile('index.html');
 });
+
+//POST ROUTE
+
+app.post('/login', function (req, res) {
+
+    let username = req.body.username;
+    let password = req.body.password;
+    let query = "SELECT title FROM user where username = '" + username + "' and password = '" + password + "'";
+
+    res.sendFile('index.html');
+});
+
 
 
